@@ -18,19 +18,19 @@ user-invocable: true
 ## Předpoklady
 
 Před doporučením zkontroluj:
-1. Existuje `${CLAUDE_PLUGIN_ROOT}/data/profil.md`? Pokud ne → "Nejdřív spusť nastavení."
-2. Jsou soubory v `${CLAUDE_PLUGIN_ROOT}/data/mista/`? Pokud ne → "Nemáš nastavená žádná místa."
-3. Jsou soubory v `${CLAUDE_PLUGIN_ROOT}/data/rostliny/`? Pokud ne → "Nemáš žádné rostliny v databázi."
+1. Existuje `$POMPO_HOME/profil.md`? Pokud ne → "Nejdřív spusť nastavení."
+2. Jsou soubory v `$POMPO_HOME/mista/`? Pokud ne → "Nemáš nastavená žádná místa."
+3. Jsou soubory v `$POMPO_HOME/rostliny/`? Pokud ne → "Nemáš žádné rostliny v databázi."
 
 ## Postup
 
 ### 1. Načtení dat
 
-- Přečti `${CLAUDE_PLUGIN_ROOT}/data/profil.md` — extrahuj typické teploty pro aktuální měsíc
-- Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/mista/`
-- Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/rostliny/`
-- Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/vysevy/` (pro kontrolu co už je zaseto)
-- Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/inventar/` (pro kontrolu co je na skladě)
+- Přečti `$POMPO_HOME/profil.md` — extrahuj typické teploty pro aktuální měsíc
+- Přečti všechny soubory v `$POMPO_HOME/mista/`
+- Přečti všechny soubory v `$POMPO_HOME/rostliny/`
+- Přečti všechny soubory v `$POMPO_HOME/vysevy/` (pro kontrolu co už je zaseto)
+- Přečti všechny soubory v `$POMPO_HOME/inventar/` (pro kontrolu co je na skladě)
 
 ### 2. Odvození efektivní teploty míst
 

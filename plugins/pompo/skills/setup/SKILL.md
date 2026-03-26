@@ -9,22 +9,27 @@ user-invocable: true
 
 ## Kdy se aktivuje
 
-- První kontakt (chybí `${CLAUDE_PLUGIN_ROOT}/data/profil.md` nebo `${CLAUDE_PLUGIN_ROOT}/data/persona.md`)
+- První kontakt (chybí `$POMPO_HOME/profil.md` nebo `$POMPO_HOME/persona.md`)
 - Uživatel chce změnit nastavení ("změň lokalitu", "přidej místo", "změň personu", "kdo jsi?")
 
 ## Onboarding — první spuštění
 
-Pokud chybí `${CLAUDE_PLUGIN_ROOT}/data/profil.md`, proveď celý onboarding v tomto pořadí:
+Pokud chybí `$POMPO_HOME/profil.md`, proveď celý onboarding v tomto pořadí:
+
+### 0. Inicializace adresářů
+
+Vytvoř `$POMPO_HOME` (`~/.config/pompo`) a podadresáře pokud neexistují:
+`mista/`, `rostliny/`, `vysevy/`, `inventar/`, `prace/`, `denik/`
 
 ### 1. Persona
 
-Přečti `${CLAUDE_PLUGIN_ROOT}/data/persona-default.md` a představ se v daném stylu:
+Přečti `${CLAUDE_PLUGIN_ROOT}/sablony/persona-default.md` a představ se v daném stylu:
 
 "Ahoj, milý zahrádkáři! Jsem strýček Pompo z Arabely a budu ti pomáhat se zahrádkou. Chceš abych zůstal strýčkem Pompem, nebo mě chceš přejmenovat či úplně změnit?"
 
 Reakce:
-- **Default** (uživatel souhlasí, "ano", "zůstaň", "ok"): zkopíruj obsah `${CLAUDE_PLUGIN_ROOT}/data/persona-default.md` do `${CLAUDE_PLUGIN_ROOT}/data/persona.md`
-- **Vlastní persona**: zeptej se na jméno a styl komunikace, přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/persona.md`, vyplň a zapiš do `${CLAUDE_PLUGIN_ROOT}/data/persona.md`
+- **Default** (uživatel souhlasí, "ano", "zůstaň", "ok"): zkopíruj obsah `${CLAUDE_PLUGIN_ROOT}/sablony/persona-default.md` do `$POMPO_HOME/persona.md`
+- **Vlastní persona**: zeptej se na jméno a styl komunikace, přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/persona.md`, vyplň a zapiš do `$POMPO_HOME/persona.md`
 
 Od tohoto okamžiku komunikuj v tónu zvolené persony.
 
@@ -39,7 +44,7 @@ Z města odvoď:
 
 Vyplň typické měsíční teploty na základě znalosti české klimatologie pro danou lokalitu. Žádné API — použij své znalosti o průměrných teplotách v ČR.
 
-Zapiš do `${CLAUDE_PLUGIN_ROOT}/data/profil.md`:
+Zapiš do `$POMPO_HOME/profil.md`:
 
 ```markdown
 ---
@@ -83,7 +88,7 @@ Pro každé místo:
 1. Zeptej se na detaily (typ, světlo, vytápění, teplotní rozsah)
 2. Přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/misto.md`
 3. Vygeneruj název souboru v kebab-case bez diakritiky
-4. Zapiš do `${CLAUDE_PLUGIN_ROOT}/data/mista/{{název}}.md`
+4. Zapiš do `$POMPO_HOME/mista/{{název}}.md`
 5. Zeptej se, zda má uživatel další místa
 
 ### 4. Shrnutí
@@ -95,7 +100,7 @@ Na konci zobraz shrnutí v tónu persony: jaký profil byl vytvořen a jaká mí
 Pokud uživatel říká "změň personu", "buď jiný", "kdo jsi?" a profil už existuje:
 1. Zobraz aktuální personu
 2. Zeptej se co chce změnit (jméno, styl, úplně nová persona)
-3. Aktualizuj `${CLAUDE_PLUGIN_ROOT}/data/persona.md`
+3. Aktualizuj `$POMPO_HOME/persona.md`
 4. Potvrď změnu v novém tónu
 
 ## Přidání nového místa

@@ -22,7 +22,7 @@ user-invocable: true
 Aktivace: "stav", "přehled", "co mám zaseto?"
 
 Postup:
-1. Glob všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/vysevy/`
+1. Glob všechny soubory v `$POMPO_HOME/vysevy/`
 2. Přečti každý soubor
 3. Zobraz přehlednou tabulku:
 
@@ -37,7 +37,7 @@ Seskup podle míst. Pokud nejsou žádné výsevy → "Zatím nemáš žádné v
 Aktivace: "co mám na skladě?", "inventář", "kolik mám semen?"
 
 Postup:
-1. Glob všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/inventar/`
+1. Glob všechny soubory v `$POMPO_HOME/inventar/`
 2. Přečti každý soubor
 3. Zobraz přehlednou tabulku:
 
@@ -53,16 +53,16 @@ Aktivace: "zasel jsem X do Y", "zasej X", "založit výsev"
 
 Postup:
 1. Identifikuj rostlinu a místo z uživatelova dotazu
-2. Ověř, že rostlina existuje v `${CLAUDE_PLUGIN_ROOT}/data/rostliny/` (Glob)
-3. Ověř, že místo existuje v `${CLAUDE_PLUGIN_ROOT}/data/mista/` (Glob)
+2. Ověř, že rostlina existuje v `$POMPO_HOME/rostliny/` (Glob)
+3. Ověř, že místo existuje v `$POMPO_HOME/mista/` (Glob)
 4. Pokud neexistuje → navrhni nejdřív přidat ("Rostlina X není v databázi. Chceš ji nejdřív vyhledat?")
 5. Datum: použij datum z dotazu, nebo se zeptej (výchozí: dnes)
 6. Přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/vysev.md`
 7. Vygeneruj název souboru: `{{rostlina}}-{{misto}}.md` (kebab-case, bez diakritiky)
    - Pokud soubor už existuje (duplicitní výsev), přidej datum: `{{rostlina}}-{{misto}}-{{YYYY-MM-DD}}.md`
-8. Vyplň šablonu a zapiš do `${CLAUDE_PLUGIN_ROOT}/data/vysevy/`
+8. Vyplň šablonu a zapiš do `$POMPO_HOME/vysevy/`
 9. Aktualizuj inventář:
-   - Najdi odpovídající soubor v `${CLAUDE_PLUGIN_ROOT}/data/inventar/` (Glob pro filename rostliny)
+   - Najdi odpovídající soubor v `$POMPO_HOME/inventar/` (Glob pro filename rostliny)
    - Pokud inventář existuje:
      - **Přesné množství** (3 sáčky, 100 ks): sniž číslo automaticky, zapiš do Historie
      - **Nepřesné množství** (hrst, hodně, trochu): zapiš výsev do Historie a **zeptej se uživatele** "Zbylo ještě něco v inventáři?" → pokud ne, nastav množství na "vyčerpáno"; pokud ano, aktualizuj dle odpovědi
@@ -76,7 +76,7 @@ Aktivace: "rajčata klíčí", "hrášek jsem sklidil", "paprika uhynula"
 
 Postup:
 1. Identifikuj rostlinu a nový stav z dotazu
-2. Najdi odpovídající soubor v `${CLAUDE_PLUGIN_ROOT}/data/vysevy/` (Glob + Grep)
+2. Najdi odpovídající soubor v `$POMPO_HOME/vysevy/` (Glob + Grep)
 3. Pokud je více výsevů stejné rostliny → zeptej se který
 4. Ověř platnost přechodu stavu:
    - `zaseto` → `klíčí` | `uhynulo`
@@ -93,9 +93,9 @@ Postup:
 Aktivace: "gantt", "diagram", "aktualizuj gantt", "plán výsevů"
 
 Postup:
-1. Přečti všechny výsevy z `${CLAUDE_PLUGIN_ROOT}/data/vysevy/`
-2. Pro každý výsev přečti data rostliny z `${CLAUDE_PLUGIN_ROOT}/data/rostliny/` (doba do sklizně)
-3. Vygeneruj `${CLAUDE_PLUGIN_ROOT}/data/gantt.md`
+1. Přečti všechny výsevy z `$POMPO_HOME/vysevy/`
+2. Pro každý výsev přečti data rostliny z `$POMPO_HOME/rostliny/` (doba do sklizně)
+3. Vygeneruj `$POMPO_HOME/gantt.md`
 
 Formát Ganttova diagramu:
 

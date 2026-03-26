@@ -22,7 +22,7 @@ Extrahuj název rostliny z uživatelova dotazu. Vygeneruj kebab-case název soub
 
 ### 2. Kontrola existence
 
-Glob pro `${CLAUDE_PLUGIN_ROOT}/data/rostliny/{{filename}}.md`:
+Glob pro `$POMPO_HOME/rostliny/{{filename}}.md`:
 - Pokud existuje a uživatel nežádá aktualizaci → zobraz existující data
 - Pokud existuje a uživatel žádá aktualizaci → pokračuj vyhledáváním
 - Pokud neexistuje → pokračuj vyhledáváním
@@ -41,7 +41,7 @@ Priorita zdrojů:
 3. Co nebylo nalezeno, označ jako "nezjištěno"
 4. Vyplň `zdroj` — URL odkud data pochází
 5. Vyplň `datum_aktualizace` — dnešní datum
-6. Zapiš do `${CLAUDE_PLUGIN_ROOT}/data/rostliny/{{filename}}.md`
+6. Zapiš do `$POMPO_HOME/rostliny/{{filename}}.md`
 
 ### 5. Inventární záznam
 
@@ -49,7 +49,7 @@ Pokud uživatel zmínil obchod/dodavatele ("přišlo mi osivo z permaseminka.cz"
 1. Přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/inventar.md`
 2. Zeptej se na množství (volný formát: "1 sáček", "hrst", "cca 50 ks")
 3. Vyplň: rostlina (odkaz na filename), množství, obchod, datum nákupu (dnes), expirace (nezjištěno pokud neuvedeno)
-4. Zapiš do `${CLAUDE_PLUGIN_ROOT}/data/inventar/{{filename}}.md`
+4. Zapiš do `$POMPO_HOME/inventar/{{filename}}.md`
 
 Pokud uživatel nezmínil obchod (jen "najdi info o rajčatech") → inventář nevytvářej.
 

@@ -66,12 +66,11 @@ Vygeneruj gantt.
 
 ## Struktura dat
 
-Uživatelská data se ukládají do `plugins/pompo/data/`:
+Uživatelská data se ukládají do `~/.config/pompo/` (persistentní, přežijí aktualizace pluginu):
 
 ```
-data/
+~/.config/pompo/
   persona.md         # persona asistenta (jméno, styl)
-  persona-default.md # výchozí persona (strýček Pompo)
   profil.md          # lokalita, klimatická zóna, typické teploty
   mista/             # pěstební místa (.md)
   rostliny/          # databáze rostlin (.md)

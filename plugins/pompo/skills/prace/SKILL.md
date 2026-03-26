@@ -23,9 +23,9 @@ Aktivace: "přidej práci", "potřebuji udělat X", "je potřeba X"
 Postup:
 1. Identifikuj název práce z dotazu
 2. Zjisti, zda se práce váže na konkrétní rostlinu:
-   - Pokud ano → najdi soubor v `${CLAUDE_PLUGIN_ROOT}/data/rostliny/` (Glob), ulož odkaz
+   - Pokud ano → najdi soubor v `$POMPO_HOME/rostliny/` (Glob), ulož odkaz
    - Pokud ne → prázdné pole (obecná zahradnická práce)
-3. Zjisti místo (pokud zmíněno) → odkaz na soubor v `${CLAUDE_PLUGIN_ROOT}/data/mista/`
+3. Zjisti místo (pokud zmíněno) → odkaz na soubor v `$POMPO_HOME/mista/`
 4. Zjisti termín:
    - Konkrétní datum: "15. dubna"
    - Měsíc: "v dubnu"
@@ -33,7 +33,7 @@ Postup:
    - Pokud neuvedeno → zeptej se
 5. Přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/prace.md`
 6. Vygeneruj název souboru v kebab-case bez diakritiky
-7. Zapiš do `${CLAUDE_PLUGIN_ROOT}/data/prace/{{název}}.md`
+7. Zapiš do `$POMPO_HOME/prace/{{název}}.md`
 8. Potvrď v tónu persony
 
 ### 2. Přehled prací
@@ -41,7 +41,7 @@ Postup:
 Aktivace: "co je potřeba udělat?", "jaké mám práce?", "úkoly"
 
 Postup:
-1. Glob všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/prace/`
+1. Glob všechny soubory v `$POMPO_HOME/prace/`
 2. Přečti každý soubor
 3. Filtruj: zobraz pouze práce se stavem `plánováno`
 4. Seřaď podle termínu (nejbližší první)
@@ -59,13 +59,13 @@ Aktivace: "ostříhal jsem šeřík", "kompost přeházen", "udělal jsem X", "h
 
 Postup:
 1. Identifikuj práci z dotazu
-2. Najdi odpovídající soubor v `${CLAUDE_PLUGIN_ROOT}/data/prace/` (Glob + Grep)
+2. Najdi odpovídající soubor v `$POMPO_HOME/prace/` (Glob + Grep)
 3. Pokud je více kandidátů → zeptej se který
 4. Aktualizuj soubor:
    - `stav` → `hotovo`
    - `datum_splneni` → dnešní datum
 5. Zapiš do deníku:
-   - Zkontroluj, zda existuje `${CLAUDE_PLUGIN_ROOT}/data/denik/{{YYYY-MM-DD}}.md` pro dnešek
+   - Zkontroluj, zda existuje `$POMPO_HOME/denik/{{YYYY-MM-DD}}.md` pro dnešek
    - Pokud existuje → přidej práci do sekce "Provedené práce"
    - Pokud neexistuje → vytvoř z šablony `${CLAUDE_PLUGIN_ROOT}/sablony/denik-zaznam.md`
 6. Pokud uživatel zmínil počasí nebo podmínky → zapiš do sekce "Počasí / podmínky"
@@ -76,7 +76,7 @@ Postup:
 Aktivace: "deník", "co se dělo?", "záznamy", "historie prací"
 
 Postup:
-1. Glob všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/denik/`
+1. Glob všechny soubory v `$POMPO_HOME/denik/`
 2. Seřaď od nejnovějšího
 3. Zobraz přehled posledních záznamů (nebo za období pokud uživatel specifikoval)
 
