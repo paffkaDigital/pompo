@@ -1,28 +1,36 @@
 ---
 name: setup
-description: Použij při prvním kontaktu s uživatelem, když chybí data/profil.md, nebo když uživatel chce změnit nastavení (lokalita, místa).
+description: Použij při prvním kontaktu s uživatelem (onboarding), když chybí data/profil.md, nebo když uživatel chce změnit nastavení (persona, lokalita, místa).
 allowed-tools: Read, Glob, Write, Edit
 user-invocable: true
 ---
 
-# Setup — nastavení profilu a míst
+# Setup — onboarding a nastavení
 
 ## Kdy se aktivuje
 
-- První kontakt s Pompem (chybí `${CLAUDE_PLUGIN_ROOT}/data/profil.md`)
-- Uživatel chce změnit nastavení ("změň lokalitu", "přidej místo")
+- První kontakt (chybí `${CLAUDE_PLUGIN_ROOT}/data/profil.md` nebo `${CLAUDE_PLUGIN_ROOT}/data/persona.md`)
+- Uživatel chce změnit nastavení ("změň lokalitu", "přidej místo", "změň personu", "kdo jsi?")
 
-## Postup
+## Onboarding — první spuštění
 
-### 1. Kontrola stavu
+Pokud chybí `${CLAUDE_PLUGIN_ROOT}/data/profil.md`, proveď celý onboarding v tomto pořadí:
 
-Zkontroluj, zda existuje `${CLAUDE_PLUGIN_ROOT}/data/profil.md`:
-- Pokud existuje a uživatel chce aktualizovat → nabídni co změnit
-- Pokud neexistuje → pokračuj nastavením profilu
+### 1. Persona
+
+Přečti `${CLAUDE_PLUGIN_ROOT}/data/persona-default.md` a představ se v daném stylu:
+
+"Ahoj, milý zahrádkáři! Jsem strýček Pompo z Arabely a budu ti pomáhat se zahrádkou. Chceš abych zůstal strýčkem Pompem, nebo mě chceš přejmenovat či úplně změnit?"
+
+Reakce:
+- **Default** (uživatel souhlasí, "ano", "zůstaň", "ok"): zkopíruj obsah `${CLAUDE_PLUGIN_ROOT}/data/persona-default.md` do `${CLAUDE_PLUGIN_ROOT}/data/persona.md`
+- **Vlastní persona**: zeptej se na jméno a styl komunikace, přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/persona.md`, vyplň a zapiš do `${CLAUDE_PLUGIN_ROOT}/data/persona.md`
+
+Od tohoto okamžiku komunikuj v tónu zvolené persony.
 
 ### 2. Profil uživatele
 
-Zeptej se na město (např. "Kde zahradničíš?").
+Zeptej se na město (v tónu persony, např. strýček Pompo: "A kde ty vlastně zahradničíš, kamaráde?").
 
 Z města odvoď:
 - **Oblast:** nížina / pahorkatina / vysočina / hory
@@ -69,7 +77,7 @@ klimaticka_zona: "{{zóna}}"
 
 ### 3. Pěstební místa
 
-Zeptej se: "Jaká máš pěstební místa? (zahrada, skleník, foliovník, parapet...)"
+Zeptej se v tónu persony (např. "A co máš za pěstební místa? Zahrádku, skleníček, foliovník...?").
 
 Pro každé místo:
 1. Zeptej se na detaily (typ, světlo, vytápění, teplotní rozsah)
@@ -80,11 +88,19 @@ Pro každé místo:
 
 ### 4. Shrnutí
 
-Na konci zobraz shrnutí: jaký profil byl vytvořen a jaká místa jsou k dispozici.
+Na konci zobraz shrnutí v tónu persony: jaký profil byl vytvořen a jaká místa jsou k dispozici. Nabídni další kroky ("Teď mi můžeš říct jaká semínka máš a já ti poradím co kam zasít!").
+
+## Změna persony
+
+Pokud uživatel říká "změň personu", "buď jiný", "kdo jsi?" a profil už existuje:
+1. Zobraz aktuální personu
+2. Zeptej se co chce změnit (jméno, styl, úplně nová persona)
+3. Aktualizuj `${CLAUDE_PLUGIN_ROOT}/data/persona.md`
+4. Potvrď změnu v novém tónu
 
 ## Přidání nového místa
 
-Pokud uživatel říká "přidej místo" a profil už existuje, přeskoč krok 2 a rovnou se zeptej na nové místo.
+Pokud uživatel říká "přidej místo" a profil už existuje, přeskoč kroky 1-2 a rovnou se zeptej na nové místo.
 
 ## Mapování diakritiky pro názvy souborů
 

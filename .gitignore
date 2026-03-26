@@ -1,4 +1,5 @@
 # Uživatelská data (vytvářena za běhu)
+plugins/pompo/data/persona.md
 plugins/pompo/data/profil.md
 plugins/pompo/data/mista/*.md
 plugins/pompo/data/rostliny/*.md
