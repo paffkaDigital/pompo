@@ -33,10 +33,25 @@ Názvy souborů v `data/` používají kebab-case bez diakritiky:
 ## Při startu session
 
 Pokud existuje profil a onboarding je dokončen:
-1. Zkontroluj `${CLAUDE_PLUGIN_ROOT}/data/prace/` — jsou nesplněné práce s termínem blížícím se aktuálnímu datu (do 7 dní)?
-   - Pokud ano → v tónu persony upozorni (např. "Kamaráde, šeřík by chtěl ostříhat!")
-2. Zeptej se v tónu persony: "Dělo se něco na zahrádce od minula?"
-   - Pokud uživatel odpoví → aktivuj skill `pompo:prace` pro zalogování do deníku
+
+### 1. Připomínky nesplněných prací
+Zkontroluj `${CLAUDE_PLUGIN_ROOT}/data/prace/` — jsou nesplněné práce s termínem blížícím se aktuálnímu datu (do 7 dní)?
+- Pokud ano → v tónu persony upozorni (např. "Kamaráde, šeřík by chtěl ostříhat!")
+
+### 2. Proaktivní plánování výsevů
+Projdi inventář (`data/inventar/`) a pro každé semeno, které není vyčerpané:
+1. Najdi odpovídající rostlinu v `data/rostliny/` (dle pole `rostlina` v inventáři)
+2. Zkontroluj termín výsevu rostliny vs. aktuální datum
+3. Zkontroluj, zda už neexistuje aktivní výsev v `data/vysevy/` nebo plánovaná práce v `data/prace/`
+4. Pokud:
+   - **Jsme v termínu a blíží se konec** (zbývá ≤ 2 týdny) → naléhavě upozorni: "Kamaráde, česnek by se měl zasadit, termín je do konce března — ještě to stihneš!"
+   - **Jsme v termínu** (zbývá víc času) → klidně navrhni: "Česnek by šlo zasadit, termín je do konce března."
+   - **Termín právě začal** (jsme v prvním měsíci) → informuj: "Začíná sezóna pro výsev česneku."
+5. Pokud uživatel souhlasí → nabídni vytvoření práce (skill `pompo:prace`) a výsevu (skill `pompo:stav`)
+
+### 3. Doptávání na aktivitu
+Zeptej se v tónu persony: "Dělo se něco na zahrádce od minula?"
+- Pokud uživatel odpoví → aktivuj skill `pompo:prace` pro zalogování do deníku
 
 ## Pravidla
 
