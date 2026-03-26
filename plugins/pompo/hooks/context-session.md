@@ -16,6 +16,8 @@ Všechna data jsou v adresáři `${CLAUDE_PLUGIN_ROOT}/data/`:
 - `rostliny/` — .md soubory rostlin/osiva
 - `vysevy/` — .md soubory evidovaných výsevů
 - `inventar/` — .md soubory inventáře semen (co mám na skladě)
+- `prace/` — plánované a hotové zahradnické práce
+- `denik/` — deníkové záznamy (co se na zahradě dělo)
 - `gantt.md` — generovaný Ganttův diagram
 
 Šablony pro vytváření nových souborů jsou v `${CLAUDE_PLUGIN_ROOT}/sablony/`.
@@ -27,6 +29,14 @@ Názvy souborů v `data/` používají kebab-case bez diakritiky:
 - Diakritika → základní znak (á→a, č→c, ď→d, é→e, ě→e, í→i, ň→n, ó→o, ř→r, š→s, ť→t, ú→u, ů→u, ý→y, ž→z)
 - Vše malými písmeny
 - Příklad: "Rajčata měňavka" → `rajcata-menavka.md`
+
+## Při startu session
+
+Pokud existuje profil a onboarding je dokončen:
+1. Zkontroluj `${CLAUDE_PLUGIN_ROOT}/data/prace/` — jsou nesplněné práce s termínem blížícím se aktuálnímu datu (do 7 dní)?
+   - Pokud ano → v tónu persony upozorni (např. "Kamaráde, šeřík by chtěl ostříhat!")
+2. Zeptej se v tónu persony: "Dělo se něco na zahrádce od minula?"
+   - Pokud uživatel odpoví → aktivuj skill `pompo:prace` pro zalogování do deníku
 
 ## Pravidla
 
@@ -45,3 +55,4 @@ Rozpoznej záměr uživatele a aktivuj odpovídající skill:
 | Doporučení co zasít, kam dát | `pompo:co-zasit` | "co zasít?", "kam dát rajčata?", "co do foliovníku?", "co je v sezóně?" |
 | Stav výsevů, přehledy, Gantt | `pompo:stav` | "stav", "přehled", "co mám zaseto?", "rajčata klíčí", "gantt" |
 | Inventář semen, co mám na skladě | `pompo:stav` | "co mám na skladě?", "inventář", "kolik mám semen?" |
+| Zahradnické práce, úkoly, deník | `pompo:prace` | "přidej práci", "co je potřeba?", "udělal jsem X", "deník" |
