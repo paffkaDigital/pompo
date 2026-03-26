@@ -85,7 +85,7 @@ Vygenerováno: {{datum}}
 
 | Rostlina | Led | Úno | Bře | Dub | Kvě | Čvn | Čvc | Srp | Zář | Říj | Lis | Pro |
 |----------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| {{název}} | ... | ... | [V] | [V] | [R] | [R] | [R] | [S] | ... | ... | ... | ... |
+| [{{název}}](../rostliny/{{soubor}}.md) | ... | ... | [V] | [V] | [R] | [R] | [R] | [S] | ... | ... | ... | ... |
 
 Legenda:
 - [V] = výsev / klíčení
@@ -102,6 +102,7 @@ Pravidla:
 - Dobu růstu odvoď z `doba do sklizně` v databázi rostliny
 - Pokud rostlina byla přesazena, zobraz přesun na nové místo
 - Soubor musí být čitelný v čistém markdownu a vhodný k tisku
+- Názvy rostlin v tabulce jsou relativní linky na soubory v `data/rostliny/` (formát `[Název](../rostliny/soubor.md)`)
 
 ## Mapování diakritiky pro názvy souborů
 
