@@ -43,9 +43,19 @@ Priorita zdrojů:
 5. Vyplň `datum_aktualizace` — dnešní datum
 6. Zapiš do `${CLAUDE_PLUGIN_ROOT}/data/rostliny/{{filename}}.md`
 
-### 5. Potvrzení
+### 5. Inventární záznam
 
-Zobraz uživateli shrnutí — co bylo nalezeno, co zůstalo jako "nezjištěno".
+Pokud uživatel zmínil obchod/dodavatele ("přišlo mi osivo z permaseminka.cz", "koupil jsem v zahradnictví"):
+1. Přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/inventar.md`
+2. Zeptej se na množství (volný formát: "1 sáček", "hrst", "cca 50 ks")
+3. Vyplň: rostlina (odkaz na filename), množství, obchod, datum nákupu (dnes), expirace (nezjištěno pokud neuvedeno)
+4. Zapiš do `${CLAUDE_PLUGIN_ROOT}/data/inventar/{{filename}}.md`
+
+Pokud uživatel nezmínil obchod (jen "najdi info o rajčatech") → inventář nevytvářej.
+
+### 6. Potvrzení
+
+Zobraz uživateli shrnutí — co bylo nalezeno, co zůstalo jako "nezjištěno". Pokud byl vytvořen inventář, zmíň to.
 
 ## Postup — hromadný režim
 

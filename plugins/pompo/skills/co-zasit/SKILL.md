@@ -30,6 +30,7 @@ Před doporučením zkontroluj:
 - Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/mista/`
 - Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/rostliny/`
 - Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/vysevy/` (pro kontrolu co už je zaseto)
+- Přečti všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/inventar/` (pro kontrolu co je na skladě)
 
 ### 2. Odvození efektivní teploty míst
 
@@ -50,6 +51,7 @@ Pro každou rostlinu v databázi:
 2. **Teplota klíčení:** Splňuje efektivní teplota místa minimální teplotu klíčení?
 3. **Světlo:** Odpovídá světlo v místě požadavkům rostliny?
 4. **Už zaseto?** Existuje aktivní výsev (stav jiný než `sklizeno` / `uhynulo`)?
+5. **Na skladě?** Existuje inventární záznam s množstvím jiným než "vyčerpáno"?
 
 ### 4. Zohlednění existujících výsevů
 
@@ -85,4 +87,7 @@ Zobraz jen rostliny vhodné pro dané místo.
 
 - Tento skill je čistě poradní — nic nezapisuje, pouze čte a doporučuje.
 - Pokud má rostlina pole "nezjištěno", upozorni na to a doporuč aktualizaci dat.
+- Doporučuj primárně rostliny, které má uživatel na skladě (v inventáři).
+- Rostliny bez inventáře zobraz v samostatné sekci s poznámkou "nemáš na skladě".
+- Rostliny s vyčerpaným inventářem nezobrazuj (nebo jen s poznámkou "semena vyčerpána").
 - Vždy uveď aktuální datum a měsíc, ze kterého vycházíš.

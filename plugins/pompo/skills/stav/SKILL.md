@@ -13,6 +13,7 @@ user-invocable: true
 - "zasel jsem rajčata do foliovníku"
 - "rajčata klíčí", "hrášek roste"
 - "gantt", "diagram", "aktualizuj gantt"
+- "co mám na skladě?", "inventář", "kolik mám semen?"
 
 ## Režimy
 
@@ -31,7 +32,22 @@ Postup:
 
 Seskup podle míst. Pokud nejsou žádné výsevy → "Zatím nemáš žádné výsevy evidované."
 
-### 2. Nový výsev
+### 2. Inventář semen
+
+Aktivace: "co mám na skladě?", "inventář", "kolik mám semen?"
+
+Postup:
+1. Glob všechny soubory v `${CLAUDE_PLUGIN_ROOT}/data/inventar/`
+2. Přečti každý soubor
+3. Zobraz přehlednou tabulku:
+
+| Rostlina | Množství | Odkud | Nákup | Expirace |
+|----------|----------|-------|-------|----------|
+| {{nazev}} | {{mnozstvi}} | {{obchod}} | {{datum}} | {{expirace}} |
+
+Pokud je inventář prázdný → "Nemáš evidovaná žádná semena. Řekni mi co ti přišlo."
+
+### 3. Nový výsev
 
 Aktivace: "zasel jsem X do Y", "zasej X", "založit výsev"
 
@@ -45,7 +61,14 @@ Postup:
 7. Vygeneruj název souboru: `{{rostlina}}-{{misto}}.md` (kebab-case, bez diakritiky)
    - Pokud soubor už existuje (duplicitní výsev), přidej datum: `{{rostlina}}-{{misto}}-{{YYYY-MM-DD}}.md`
 8. Vyplň šablonu a zapiš do `${CLAUDE_PLUGIN_ROOT}/data/vysevy/`
-9. Potvrď uživateli
+9. Aktualizuj inventář:
+   - Najdi odpovídající soubor v `${CLAUDE_PLUGIN_ROOT}/data/inventar/` (Glob pro filename rostliny)
+   - Pokud inventář existuje:
+     - **Přesné množství** (3 sáčky, 100 ks): sniž číslo automaticky, zapiš do Historie
+     - **Nepřesné množství** (hrst, hodně, trochu): zapiš výsev do Historie a **zeptej se uživatele** "Zbylo ještě něco v inventáři?" → pokud ne, nastav množství na "vyčerpáno"; pokud ano, aktualizuj dle odpovědi
+     - Pokud množství klesne na 0 / vyčerpáno → upozorni "Poslední semena použita"
+   - Pokud inventář neexistuje → neřeš, ne každý vede inventář
+10. Potvrď uživateli
 
 ### 3. Aktualizace stavu
 

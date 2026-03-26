@@ -9,6 +9,7 @@ Všechna data jsou v adresáři `${CLAUDE_PLUGIN_ROOT}/data/`:
 - `mista/` — .md soubory pěstebních míst
 - `rostliny/` — .md soubory rostlin/osiva
 - `vysevy/` — .md soubory evidovaných výsevů
+- `inventar/` — .md soubory inventáře semen (co mám na skladě)
 - `gantt.md` — generovaný Ganttův diagram
 
 Šablony pro vytváření nových souborů jsou v `${CLAUDE_PLUGIN_ROOT}/sablony/`.
@@ -37,3 +38,4 @@ Rozpoznej záměr uživatele a aktivuj odpovídající skill:
 | Hledání info o rostlině, přidání osiva | `pompo:hledej-rostlinu` | "najdi info o X", "přidej rostlinu X", "přišlo mi osivo z Y" |
 | Doporučení co zasít, kam dát | `pompo:co-zasit` | "co zasít?", "kam dát rajčata?", "co do foliovníku?", "co je v sezóně?" |
 | Stav výsevů, přehledy, Gantt | `pompo:stav` | "stav", "přehled", "co mám zaseto?", "rajčata klíčí", "gantt" |
+| Inventář semen, co mám na skladě | `pompo:stav` | "co mám na skladě?", "inventář", "kolik mám semen?" |

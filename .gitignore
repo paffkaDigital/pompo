@@ -3,6 +3,7 @@ plugins/pompo/data/profil.md
 plugins/pompo/data/mista/*.md
 plugins/pompo/data/rostliny/*.md
 plugins/pompo/data/vysevy/*.md
+plugins/pompo/data/inventar/*.md
 plugins/pompo/data/gantt.md
 
 # Ponechat .gitkeep soubory
@@ -10,3 +11,4 @@ plugins/pompo/data/gantt.md
 !plugins/pompo/data/mista/.gitkeep
 !plugins/pompo/data/rostliny/.gitkeep
 !plugins/pompo/data/vysevy/.gitkeep
+!plugins/pompo/data/inventar/.gitkeep
