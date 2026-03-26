@@ -1,0 +1,12 @@
+# Uživatelská data (vytvářena za běhu)
+data/profil.md
+data/mista/*.md
+data/rostliny/*.md
+data/vysevy/*.md
+data/gantt.md
+
+# Ponechat .gitkeep soubory
+!data/.gitkeep
+!data/mista/.gitkeep
+!data/rostliny/.gitkeep
+!data/vysevy/.gitkeep

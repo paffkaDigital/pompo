@@ -1,0 +1,11 @@
+{
+  "name": "pompo",
+  "version": "0.1.0",
+  "description": "Zahradní asistent — plánování výsevů, evidence rostlin a míst",
+  "license": "MIT",
+  "author": {
+    "name": "paffkaDigital"
+  },
+  "homepage": "https://github.com/paffkaDigital/pompo",
+  "repository": "https://github.com/paffkaDigital/pompo"
+}

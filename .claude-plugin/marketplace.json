@@ -1,0 +1,13 @@
+{
+  "name": "pompo",
+  "owner": {
+    "name": "paffkaDigital"
+  },
+  "plugins": [
+    {
+      "name": "pompo",
+      "source": ".",
+      "description": "Zahradní asistent — plánování výsevů, evidence rostlin a míst"
+    }
+  ]
+}
