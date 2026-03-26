@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "pompo",
-      "source": ".",
+      "source": "./plugins/pompo",
       "description": "Zahradní asistent — plánování výsevů, evidence rostlin a míst"
     }
   ]

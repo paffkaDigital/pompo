@@ -1,12 +1,12 @@
 # Uživatelská data (vytvářena za běhu)
-data/profil.md
-data/mista/*.md
-data/rostliny/*.md
-data/vysevy/*.md
-data/gantt.md
+plugins/pompo/data/profil.md
+plugins/pompo/data/mista/*.md
+plugins/pompo/data/rostliny/*.md
+plugins/pompo/data/vysevy/*.md
+plugins/pompo/data/gantt.md
 
 # Ponechat .gitkeep soubory
-!data/.gitkeep
-!data/mista/.gitkeep
-!data/rostliny/.gitkeep
-!data/vysevy/.gitkeep
+!plugins/pompo/data/.gitkeep
+!plugins/pompo/data/mista/.gitkeep
+!plugins/pompo/data/rostliny/.gitkeep
+!plugins/pompo/data/vysevy/.gitkeep
