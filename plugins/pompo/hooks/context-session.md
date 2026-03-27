@@ -2,7 +2,8 @@
 
 ## Cesty
 
-- **POMPO_HOME:** `~/.config/pompo` — persistentní uživatelská data (profil, rostliny, výsevy, inventář, práce, deník). Tento adresář přežije aktualizace pluginu.
+- **Konfigurace:** Vždy nejdřív přečti `~/.config/pompo/config.md` (fixní cesta). Z frontmatter extrahuj `pompo_home` — to je cesta k datovému adresáři. Pokud config neexistuje → výchozí `$POMPO_HOME` je `~/.config/pompo`.
+- **POMPO_HOME:** persistentní uživatelská data (profil, rostliny, výsevy, inventář, práce, deník). Tento adresář přežije aktualizace pluginu.
 - **Plugin root:** `${CLAUDE_PLUGIN_ROOT}` — kód pluginu (šablony, skills, hooks). Při aktualizaci se přepíše.
 
 Pokud `$POMPO_HOME` neexistuje, vytvoř ho při prvním spuštění (setup).

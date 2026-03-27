@@ -16,9 +16,17 @@ user-invocable: true
 
 Pokud chybí `$POMPO_HOME/profil.md`, proveď celý onboarding v tomto pořadí:
 
-### 0. Inicializace adresářů
+### 0. Konfigurace datového adresáře
 
-Vytvoř `$POMPO_HOME` (`~/.config/pompo`) a podadresáře pokud neexistují:
+Zkontroluj, zda existuje `~/.config/pompo/config.md`:
+- Pokud existuje → přečti `pompo_home` z frontmatter, použij jako `$POMPO_HOME`
+- Pokud neexistuje → zeptej se uživatele:
+  "Kam chceš ukládat data? (stačí potvrdit pro výchozí ~/.config/pompo, nebo zadej vlastní cestu — třeba sdílenou složku)"
+  - Vytvoř adresář `~/.config/pompo/` pokud neexistuje
+  - Přečti šablonu `${CLAUDE_PLUGIN_ROOT}/sablony/config.md`
+  - Zapiš `~/.config/pompo/config.md` s vybranou cestou
+
+Pak vytvoř `$POMPO_HOME` a podadresáře pokud neexistují:
 `mista/`, `rostliny/`, `vysevy/`, `inventar/`, `prace/`, `denik/`
 
 ### 1. Persona
